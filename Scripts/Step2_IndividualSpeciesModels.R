@@ -431,7 +431,7 @@ treeplusheatmap <- gheatmap(
 treeplusheatmap
 
 # save
-ggsave(treeplusheatmap, filename = "TreePlusHeatMap.pdf", path = here("Figures"), width=10.5, height=7.5)
+ggsave(treeplusheatmap, filename = "Fig3_TreePlusHeatMap.pdf", path = here("Figures"), width=10.5, height=7.5)
 
 ########################################################################################
 #### Step 5: Make Model Results Tables ########
