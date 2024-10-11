@@ -129,34 +129,34 @@ showtext_auto()
 
 # use the data frame in ggplot
 dbrdaplot <- ggplot(scores, aes(x = dbRDA1, y = dbRDA2)) +
-  geom_point(aes(color=median), size=2.5) +
+  geom_point(aes(color=median), size= 1.5) +
   colorspace::scale_color_continuous_sequential(palette="Viridis", name="Frequency (Hz)", rev=T) + # set colors
   theme_classic() +
   coord_equal()+ # important for properly scaling the plot
-  xlim(-2.1, 5.5) + # give x-axis a little more room to allow for arrows and labels
+  xlim(-2.1, 5) + # give x-axis a little more room to allow for arrows and labels
   ylim(-4,4)
 
 # set locations for arrow labels
-label.df <- data.frame(dbRDA1 = c(3.6, 4), dbRDA2 = c(0.8, -0.3))
+label.df <- data.frame(dbRDA1 = c(3.5, 3.9), dbRDA2 = c(0.8, -0.3))
 
 # add arrows with labels for sound variables to the plot
 dbrda_ordplot <- dbrdaplot +
   geom_segment(data = arrows,
-               aes(x = 0, y = 0, xend = dbRDA1*3.5, yend = dbRDA2*3.5),
-               arrow = arrow(angle=25, type="open", length=unit(0.15, "inches")),
+               aes(x = 0, y = 0, xend = dbRDA1*3.1, yend = dbRDA2*3.1),
+               arrow = arrow(angle=25, type="open", length=unit(0.1, "inches")),
                colour = "black") +
-  geom_text(data=label.df, aes(x=dbRDA1, y=dbRDA2), label=c("Sound Level", "Frequency"), family="opensans")+
-  theme(legend.title = element_text(size=10, family="opensans"),
-  legend.text = element_text(size=8, family="opensans"),
-  axis.title.x = element_text(size=12, family="opensans"),
-  axis.title.y = element_text(size=12, family="opensans"),
-  axis.text.x = element_text(size=10, family="opensans"),
-  axis.text.y = element_text(size=10, family="opensans"),
+  geom_text(data=label.df, aes(x=dbRDA1, y=dbRDA2), label=c("Sound Level", "Frequency"), family="opensans", size=3)+
+  theme(legend.title = element_text(size=9, family="opensans"),
+  legend.text = element_text(size=7, family="opensans"),
+  axis.title.x = element_text(size=10, family="opensans"),
+  axis.title.y = element_text(size=10, family="opensans"),
+  axis.text.x = element_text(size=9, family="opensans"),
+  axis.text.y = element_text(size=9, family="opensans"),
   legend.position = "right",
   legend.title.position = 'top')
 dbrda_ordplot
 
-ggsave(here("Figures","dbRDA_Ordination_Figure.pdf"), dbrda_ordplot, width=7.75, height=5)
+ggsave(here("Figures","Fig5_dbRDA_Ordination.pdf"), dbrda_ordplot, width=12, height=7.5, units="cm")
 
 #### Put together data for table
 

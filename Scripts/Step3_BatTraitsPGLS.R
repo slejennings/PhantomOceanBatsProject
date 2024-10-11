@@ -245,26 +245,26 @@ font_add_google(name="Open Sans", family="opensans")
 showtext_auto()
 
 D1 <- ggplot(data=E.Fmed_df, aes(x=log(E.F), y=fit)) +
-  geom_line(color ="#00BE7D",lwd=1.5, lty=1) +
+  geom_line(color ="#00BE7D",lwd=1.2, lty=1) +
   geom_ribbon(aes(ymin=lower, ymax=upper), fill="#00BE7D",alpha=.2, lwd=.1)
 
 D2 <- D1 +
-  geom_point(data = batDat,aes(x=log(E.F),y=t_freq),color="#00BE7D", size=3, pch=19)+
+  geom_point(data = batDat,aes(x=log(E.F),y=t_freq),color="#00BE7D", size=2, pch=19)+
   geom_hline(yintercept=0, linetype="dashed", color = "gray", linewidth=.6) +
   labs(x="Natural Log(Ear:Forearm)", 
-       y = "Effect of sound freq. on activity",
-       subtitle = "(a)") +
+       y = "Effect of frequency on activity",
+       subtitle = "(b)") +
   theme_classic() +
   theme(#panel.border = element_rect(colour = "black", fill=NA, size=1), 
         panel.border = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), 
         axis.line = element_line(colour = "black"),
-        axis.text.x = element_text(color = "black", size = 12, family="opensans"),
-        axis.text.y = element_text(color = "black", size = 12, family="opensans"),
-        axis.title.x = element_text(size = 12, color = "black",family="opensans"),
-        axis.title.y = element_text(size = 12, color = "black", family="opensans"),
-        plot.subtitle = element_text(face="bold", size = 14, family="opensans")) 
+        axis.text.x = element_text(color = "black", size = 9, family="opensans"),
+        axis.text.y = element_text(color = "black", size = 9, family="opensans"),
+        axis.title.x = element_text(size = 9, color = "black",family="opensans"),
+        axis.title.y = element_text(size = 9, color = "black", family="opensans"),
+        plot.subtitle = element_text(face="bold", size = 11, family="opensans")) 
 
 D2
 
@@ -275,26 +275,26 @@ E.Fleq_pred <- predictorEffect("E.F", leqE.F)
 E.Fleq_df <-data.frame(E.Fleq_pred)
 
 E1 <- ggplot(data=E.Fleq_df, aes(x=log(E.F), y=fit)) +
-  geom_line(color ="#00BE7D",lwd=1.5, lty=1) +
+  geom_line(color ="#00BE7D",lwd=1.2, lty=1) +
   geom_ribbon(aes(ymin=lower, ymax=upper), fill="#00BE7D",alpha=.2, lwd=.1)
 
 E2 <- E1 +
-  geom_point(data = batDat,aes(x=log(E.F),y=t_leq),color="#00BE7D", size=3, pch=19)+
+  geom_point(data = batDat,aes(x=log(E.F),y=t_leq),color="#00BE7D", size=2, pch=19)+
   geom_hline(yintercept=0, linetype="dashed", color = "gray", linewidth=.6) +
   labs(x="Natural Log(Ear:Forearm)", 
        y = "Effect of sound level on activity",
-       subtitle = "(b)") +
+       subtitle = "(a)") +
   theme_classic() +
   theme(#panel.border = element_rect(colour = "black", fill=NA, size=1), 
         panel.border = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), 
         axis.line = element_line(colour = "black"),
-        axis.text.x = element_text(color = "black", size = 12, family="opensans"),
-        axis.text.y = element_text(color = "black", size = 12, family="opensans"),
-        axis.title.x = element_text(size = 12, color = "black",family="opensans"),
-        axis.title.y = element_text(size = 12, color = "black", family="opensans"),
-        plot.subtitle = element_text(face="bold", size = 14, family="opensans"))
+        axis.text.x = element_text(color = "black", size = 9, family="opensans"),
+        axis.text.y = element_text(color = "black", size = 9, family="opensans"),
+        axis.title.x = element_text(size = 9, color = "black",family="opensans"),
+        axis.title.y = element_text(size = 9, color = "black", family="opensans"),
+        plot.subtitle = element_text(face="bold", size = 11, family="opensans"))
 
 E2
 
@@ -305,26 +305,26 @@ leqBand_pred <- predictorEffect("Call_Bandwidth_kHz", leqBand)
 leqBand_df <- data.frame(leqBand_pred)
 
 F1 <- ggplot(data = leqBand_df, aes(x=Call_Bandwidth_kHz, y=fit))+
-  geom_line(color="#00BE7D",lwd=1.5, lty=1)+
+  geom_line(color="#00BE7D",lwd=1.2, lty=1)+
   geom_ribbon(aes(ymin=lower, ymax=upper), fill="#00BE7D", alpha=.2, lwd=.1)
 
 F2 <- F1 + 
-  geom_point(data=batDat, aes(x=Call_Bandwidth_kHz, y=t_leq), color="#00BE7D", size=3, pch=19)+
+  geom_point(data=batDat, aes(x=Call_Bandwidth_kHz, y=t_leq), color="#00BE7D", size=2, pch=19)+
   geom_hline(yintercept=0, linetype="dashed", color = "gray", linewidth=.6) +
   labs(x="Call bandwidth (kHz)", 
        y = "Effect of sound level on activity",
-       subtitle = "(c)")+
+       subtitle = "(d)")+
   theme_classic() +
   theme(#panel.border = element_rect(colour = "black", fill=NA, size=1),
         panel.border = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), 
         axis.line = element_line(colour = "black"),
-        axis.text.x = element_text(color = "black", size = 12, family="opensans"),
-        axis.text.y = element_text(color = "black", size = 12, family="opensans"),
-        axis.title.x = element_text(size = 12, color = "black",family="opensans"),
-        axis.title.y = element_text(size = 12, color = "black", family="opensans"),
-        plot.subtitle = element_text(face="bold", size = 14, family="opensans")) 
+        axis.text.x = element_text(color = "black", size = 9, family="opensans"),
+        axis.text.y = element_text(color = "black", size = 9, family="opensans"),
+        axis.title.x = element_text(size = 9, color = "black",family="opensans"),
+        axis.title.y = element_text(size = 9, color = "black", family="opensans"),
+        plot.subtitle = element_text(face="bold", size = 11, family="opensans")) 
 
 F2
 
@@ -335,33 +335,34 @@ leqFreqR_pred <- predictorEffect("t_freq", leqFreqR)
 leqFreqR_df <-data.frame(leqFreqR_pred)
 
 G1 <- ggplot(data=leqFreqR_df, aes(x=t_freq, y=fit))+
-  geom_line(color="#00BE7D", lwd=1.5, lty=1)+
+  geom_line(color="#00BE7D", lwd=1.2, lty=1)+
   geom_ribbon(aes(ymin=lower, ymax=upper), fill="#00BE7D",alpha=.2, lwd=.1) 
 
-G2 <- G1 + geom_point(data=batDat,aes(x=t_freq, y=t_leq), color="#00BE7D", size=3, pch=19)+
+G2 <- G1 + geom_point(data=batDat,aes(x=t_freq, y=t_leq), color="#00BE7D", size=2, pch=19)+
   geom_hline(yintercept=0, linetype="dashed", color = "gray", linewidth=.6) +
-  labs(x="Effect of sound frequency on activity", 
+  labs(x="Effect of frequency on activity", 
        y = "Effect of sound level on activity",
-       subtitle = "(d)") +
+       subtitle = "(c)") +
   theme_classic() + 
   theme(#panel.border = element_rect(colour = "black", fill=NA, size=1), 
         panel.border = element_blank(), 
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), 
         axis.line = element_line(colour = "black"),
-        axis.text.x = element_text(color = "black", size = 12, family="opensans"),
-        axis.text.y = element_text(color = "black", size = 12, family="opensans"),
-        axis.title.x = element_text(size = 12, color = "black",family="opensans"),
-        axis.title.y = element_text(size = 12, color = "black", family="opensans"),
-        plot.subtitle = element_text(face="bold", size = 14, family="opensans")) 
+        axis.text.x = element_text(color = "black", size = 9, family="opensans"),
+        axis.text.y = element_text(color = "black", size = 9, family="opensans"),
+        axis.title.x = element_text(size = 9, color = "black",family="opensans"),
+        axis.title.y = element_text(size = 9, color = "black", family="opensans"),
+        plot.subtitle = element_text(face="bold", size = 11, family="opensans")) 
 
 G2
 
 #### save plots to file ####
-g <- D2 + E2 + F2 + G2
-ggsave(here("Figures","PGLS_FourPanelTraits_Figure.pdf"), g, width = 20, height = 20, units = "cm")
+g <- E2 + D2 + G2 + F2
+ggsave(here("Figures","Fig4_PGLS_FourPanelTraits.pdf"), g, width = 12, height = 12, units = "cm")
 
-###############################################################################
+
+ ###############################################################################
 #### Step 8: Make tables of model results ####
 ###############################################################################
 

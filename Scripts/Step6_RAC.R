@@ -102,7 +102,7 @@ r2(mrichc)
 
 # save model as RDS
 saveRDS(mrichc, here("Model_Objects", "RAC_Richness.rds"))
-# mrichc <- readRDS(here("Model_Objects", "RAC_Richness.rds"))
+#mrichc <- readRDS(here("Model_Objects", "RAC_Richness.rds"))
 
 # load font to use for tables and figures
 library(showtext)
@@ -113,20 +113,20 @@ theme_set(theme_classic()) # set theme for plots
 # make richness plot 
 pred.richc <- ggeffects::predict_response(mrichc, c("treatment", "year2"), margin = "marginalmeans")
 
-richness.plot <-plot(pred.richc, show_data=T, jitter=0.15, dot_size = 2, line_size=1.25, colors=c("#4B0055", "#00BE7D")) + 
-  theme_classic(base_size = 14, base_family = "") +
+richness.plot <-plot(pred.richc, show_data=T, jitter=0.15, dot_size = 1.5, line_size=1.25, colors=c("#4B0055", "#00BE7D")) + 
+  theme_classic(base_size = 12, base_family = "") +
   labs(x="", y="Change in Richness", color="Experimental Year", title="",  subtitle = "(a)") +
   theme(
-    legend.title = element_text(size = 12, family="opensans"),
-    legend.text = element_text(size = 12, family="opensans"),
-    axis.title.x = element_text(size = 12,family="opensans", margin = margin(t=10, unit="pt")),
-    axis.title.y = element_text(size = 12, family="opensans"),
-    axis.text.x = element_text(size=12, family="opensans"),
-    axis.text.y = element_text(size=12, family="opensans"),
-    plot.subtitle = element_text(size=14,family="opensans", face="bold"),
+    legend.title = element_text(size = 10, family="opensans"),
+    legend.text = element_text(size = 10, family="opensans"),
+    axis.title.x = element_text(size = 10,family="opensans", margin = margin(t=10, unit="pt")),
+    axis.title.y = element_text(size = 10, family="opensans"),
+    axis.text.x = element_text(size=10, family="opensans"),
+    axis.text.y = element_text(size=10, family="opensans"),
+    plot.subtitle = element_text(size=12,family="opensans", face="bold"),
     legend.position="bottom"
-  )
-  
+  ) + ylim(-0.5, 0.5)
+richness.plot
 # compare treatments
 predict_response(mrichc, "treatment", margin = "marginalmeans") # get CIs for treatments
 
@@ -203,20 +203,20 @@ saveRDS(mgainc, here("Model_Objects", "RAC_Gains.rds"))
 # make a plot
 pred.gainc <- ggeffects::predict_response(mgainc, c("treatment", "year2"), margin = "marginalmeans")
 
-gains.plot <-plot(pred.gainc, show_data=T, jitter=0.15, dot_size = 2, line_size=1.25, colors=c("#4B0055", "#00BE7D")) + 
-  theme_classic(base_size = 14, base_family = "") +
+gains.plot <-plot(pred.gainc, show_data=T, jitter=0.15, dot_size = 1.5, line_size=1.25, colors=c("#4B0055", "#00BE7D")) + 
+  theme_classic(base_size = 12, base_family = "") +
   labs(x="",y="Species Gains", color="Experimental Year", title="", subtitle="(b)") +
   theme(
-    legend.title = element_text(size=12, family="opensans"),
-    legend.text = element_text(size=12, family="opensans"),
-    axis.title.x = element_text(size = 12, family="opensans", margin = margin(t=10, unit="pt")),
-    axis.title.y = element_text(size = 12, family="opensans"),
-    axis.text.x = element_text(size=12, family="opensans"),
-    axis.text.y = element_text(size=12, family="opensans"),
-    plot.subtitle = element_text(size=14, family="opensans", face="bold"),
+    legend.title = element_text(size=10, family="opensans"),
+    legend.text = element_text(size=10, family="opensans"),
+    axis.title.x = element_text(size = 10, family="opensans", margin = margin(t=10, unit="pt")),
+    axis.title.y = element_text(size = 10, family="opensans"),
+    axis.text.x = element_text(size=10, family="opensans"),
+    axis.text.y = element_text(size=10, family="opensans"),
+    plot.subtitle = element_text(size=12, family="opensans", face="bold"),
     legend.position="bottom"
-  )
-
+  )+ ylim(-0.2, 0.6)
+gains.plot
 # compare treatments
 predict_response(mgainc, "treatment", margin = "marginalmeans") # CIs for treatments. Gives marginal means
 
@@ -242,20 +242,20 @@ saveRDS(mlossc, here("Model_Objects", "RAC_Losses.rds"))
 # make a plot
 pred.lossc <- ggeffects::predict_response(mlossc, c("treatment", "year2"), marin="marginalmeans")
 
-losses.plot <- plot(pred.lossc, show_data=T, jitter=0.15, dot_size = 2, line_size=1.25, colors=c("#4B0055", "#00BE7D")) + 
-  theme_classic(base_size = 14, base_family = "") +
+losses.plot <- plot(pred.lossc, show_data=T, jitter=0.15, dot_size = 1.5, line_size=1.25, colors=c("#4B0055", "#00BE7D")) + 
+  theme_classic(base_size = 12, base_family = "") +
   labs(x="", y="Species Losses", color="Experimental Year", title="", subtitle="(c)") +
   theme(
-    legend.title = element_text(size=12, family="opensans"),
-    legend.text = element_text(size=12, family="opensans"),
-    axis.title.x = element_text(size = 12,family="opensans", margin = margin(t=10, unit="pt")),
-    axis.title.y = element_text(size = 12, family="opensans"),
-    axis.text.x = element_text(size=12, family="opensans"),
-    axis.text.y = element_text(size=12, family="opensans"),
-    plot.subtitle = element_text(size=14, family="opensans", face="bold"),
+    legend.title = element_text(size=10, family="opensans"),
+    legend.text = element_text(size=10, family="opensans"),
+    axis.title.x = element_text(size = 10,family="opensans", margin = margin(t=10, unit="pt")),
+    axis.title.y = element_text(size = 10, family="opensans"),
+    axis.text.x = element_text(size=10, family="opensans"),
+    axis.text.y = element_text(size=10, family="opensans"),
+    plot.subtitle = element_text(size=12, family="opensans", face="bold"),
     legend.position="bottom",
     plot.margin = margin(t=0, r=15, b=0, l=0) # add a smidge of white space on right side so the 3 plots look okay when combined
-  )
+  ) + ylim(-0.2, 0.6)
 losses.plot
 # compare treatments
 predict_response(mlossc, "treatment", margin = "marginalmeans") # get CIs for treatments. Calls ggemmeans for marginal means
@@ -271,7 +271,7 @@ RACplots <- richness.plot + gains.plot + losses.plot +
         legend.margin = margin(1, 1, 1, 1)) # set margin around legend
 RACplots
 
-ggsave(here("Figures", "RAC_ThreePanel_Figure.pdf"), width=8.5, height=3.5)
+ggsave(here("Figures", "Fig6_RAC_ThreePanel.pdf"), width=18, height=8, units="cm")
 
 ######### Make Tables of Model Results ################
 
