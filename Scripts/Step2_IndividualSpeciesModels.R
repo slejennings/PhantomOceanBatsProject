@@ -388,15 +388,15 @@ namescodes <- battraits %>% dplyr::select(Scientific_Name, Species_Code) %>%
 # make plot of phylogenetic tree
 treeplot <- ggtree(battree_trim) %<+% 
   namescodes + geom_tiplab(aes(label=SciName_Labels), # use SciName_Labels column from namescode to name tree tips
-                           size = 4.5, # font size for tip labels
+                           size = 3, # font size for tip labels
                            color="black", # font color for tip labels
                            offset=5, # amount of space between tips and labels
                            family="opensans",
                            fontface="italic"
   ) +
-  hexpand(.4) # specify a fraction of x range to expand the x-axis limit by. direction = 1 is for right side
+  hexpand(0.9) # specify a fraction of x range to expand the x-axis limit by. direction = 1 is for right side
 
-
+treeplot
 # organize data frame of species effects for plotting           
 heatmap_dat <- AllModelsFixEff %>% filter(! Variable %in% c("(Intercept)", "year2017", "year2018")) %>%
   left_join(., namescodes) %>%
@@ -413,25 +413,25 @@ colorspace::diverging_hcl(n = 11, h = c(294, 146), c = c(32, 68), l = c(20, 97),
                           register = "custom_greenpurple" )
 
 treeplusheatmap <- gheatmap(
-  treeplot, heatmap_dat, offset=50, width=1.9,
+  treeplot, heatmap_dat, offset=50, width=1.2,
   colnames_angle = 75, 
   colnames_offset_y = -0.2, 
   colnames_position="top",
-  font.size=4.5,
+  font.size=3,
   family="opensans",
   hjust=0,
   custom_column_labels = c("Sound Level", "Sound Frequency", "Moon Illumination", "Vegetation PC1",
                            "Vegetation PC2", "Plant Richness", "Level: Frequency")) +
   scale_fill_continuous_diverging(palette = "custom_greenpurple", n_interp=11, mid = 0, limits=c(-4.25,4.25), name="t-statistic", rev=T)+
   vexpand(.2,1) +
-  theme(axis.title.x = element_text(size = 12, face = "bold",family="opensans"),
-        legend.title = element_text(size=11, family="opensans"),
-        legend.text = element_text(size=11, family="opensans"))
+  theme(axis.title.x = element_text(size = 8, face = "bold",family="opensans"),
+        legend.title = element_text(size= 8, family="opensans"),
+        legend.text = element_text(size= 8, family="opensans"))
 
 treeplusheatmap
 
 # save
-ggsave(treeplusheatmap, filename = "Fig3_TreePlusHeatMap.pdf", path = here("Figures"), width=10.5, height=7.5)
+ggsave(treeplusheatmap, filename = "Fig3_TreePlusHeatMap.pdf", path = here("Figures"), width=16, height=11, units = "cm")
 
 ########################################################################################
 #### Step 5: Make Model Results Tables ########
